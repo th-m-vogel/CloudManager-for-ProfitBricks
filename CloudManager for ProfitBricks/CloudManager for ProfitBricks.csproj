@@ -103,13 +103,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Folder Include="Strings\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CoudRessourcePage.xaml.cs">
-      <DependentUpon>CoudRessourcePage.xaml</DependentUpon>
+    <Compile Include="CloudRessourcePage.xaml.cs">
+      <DependentUpon>CloudRessourcePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Credentials.cs" />
     <Compile Include="HomePage.xaml.cs">
@@ -120,6 +121,11 @@
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Service References\ProfitBricksApiService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -128,6 +134,206 @@
     <None Include="Common\ReadMe.txt" />
     <None Include="CloudManager for ProfitBricks_TemporaryKey.pfx" />
     <None Include="DataModel\SampleCredential.json" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.activateFirewallsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.activateLoadBalancingOnServersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.addFirewallRulesToLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.addFirewallRulesToNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.addPublicIpToNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.addRomDriveToServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.clearDataCenterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.connectStorageToServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createDataCenterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createNicResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createServerResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createSnapshotResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.createStorageResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deactivateFirewallsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deactivateLoadBalancingOnServersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteDataCenterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteFirewallsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteImageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteNotificationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteSnapshotResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deleteStorageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.deregisterServersOnLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.disconnectStorageFromServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllDataCentersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllFirewallsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllImagesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllLoadBalancersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllPublicIpBlocksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllServersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllSnapshotsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getAllStoragesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getDataCenterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getDataCenterStateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getFirewallResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getImageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getNotificationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getPublicIpBlockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getSnapshotResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.getStorageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.registerServersOnLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.releasePublicIpBlockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.removeFirewallRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.removePublicIpFromNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.removeRomDriveFromServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.reservePublicIpBlockResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.resetServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.rollbackSnapshotResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.setImageOsTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.setInternetAccessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.startServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.stopServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateDataCenterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateImageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateLoadBalancerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateNicResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateServerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateSnapshotResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.updateStorageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\ProfitbricksApiService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
@@ -137,13 +343,20 @@
     <Content Include="Assets\LightGray.png" />
     <Content Include="Assets\MediumGray.png" />
     <Content Include="Assets\DarkGray.png" />
+    <Content Include="Images\member_128.png" />
+    <None Include="Service References\ProfitBricksApiService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ProfitBricksApiService\configuration.svcinfo" />
+    <None Include="Service References\ProfitBricksApiService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CoudRessourcePage.xaml">
+    <Page Include="CloudRessourcePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +364,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProfitBricksApiService\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

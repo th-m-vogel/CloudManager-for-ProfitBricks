@@ -21,7 +21,7 @@ namespace CloudManager_for_ProfitBricks
     /// <summary>
     /// A basic page that provides characteristics common to most applications.
     /// </summary>
-    public sealed partial class CoudRessourcePage : Page
+    public sealed partial class CloudRessourcePage : Page
     {
 
         private NavigationHelper navigationHelper;
@@ -45,7 +45,7 @@ namespace CloudManager_for_ProfitBricks
         }
 
 
-        public CoudRessourcePage()
+        public CloudRessourcePage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);

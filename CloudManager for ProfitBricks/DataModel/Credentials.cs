@@ -31,8 +31,8 @@ namespace CloudManager_for_ProfitBricks.Data
     public sealed class CredentialDataSource
     {
         private static CredentialDataSource _credentialDataSource = new CredentialDataSource();
-
         private ObservableCollection<CredentialItem> _credentials = new ObservableCollection<CredentialItem>();
+
         public ObservableCollection<CredentialItem> Credentials
         {
             get { return this._credentials; }
@@ -44,7 +44,7 @@ namespace CloudManager_for_ProfitBricks.Data
             return _credentialDataSource.Credentials;
         }
 
-        public static CredentialItem GetCredential(string name)
+        public static CredentialItem GetCredentialByName(string name)
         {
             _credentialDataSource.GetCredentialData();
             // Simple linear search is acceptable for small data sets
@@ -53,26 +53,45 @@ namespace CloudManager_for_ProfitBricks.Data
             return null;
         }
 
+        public static CredentialItem GetCredentialByUser(string user)
+        {
+            _credentialDataSource.GetCredentialData();
+            // Simple linear search is acceptable for small data sets
+            var matches = _credentialDataSource.Credentials.Where((credential) => credential.User.Equals(user));
+            if (matches.Count() == 1) return matches.First();
+            return null;
+        }
+
+
+        public static void AddCredential(string name, string user, string password)
+        {
+            PasswordVault vault = new PasswordVault();
+            var matches = _credentialDataSource.Credentials.Where(credential => credential.Name.Equals(name));
+
+            foreach (var match in matches.ToArray())
+            {
+                vault.Remove(vault.Retrieve(match.Name, match.User));
+            }
+            vault.Add(new PasswordCredential(name,user,password));
+        }
+
+        public static void RemoveCredential(string name, string user, string password)
+        {
+            PasswordVault vault = new PasswordVault();
+            vault.Remove(new PasswordCredential(name, user, password));
+        }
+
         private void GetCredentialData()
         {
-            if (this.Credentials.Count != 0)
-            {
-                return;
-            }
+            this.Credentials.Clear();
             PasswordVault vault = new PasswordVault();
-
             IReadOnlyCollection<PasswordCredential> _passwordcredentials = vault.RetrieveAll();
-
             foreach (PasswordCredential _passworcredential in _passwordcredentials )
             {
-                CredentialItem credential = new CredentialItem(_passworcredential.Resource,_passworcredential.UserName,_passworcredential.Password);
+                PasswordCredential pwcredential = vault.Retrieve(_passworcredential.Resource, _passworcredential.UserName);
+                CredentialItem credential = new CredentialItem(pwcredential.Resource, pwcredential.UserName, pwcredential.Password);
                 this.Credentials.Add(credential);
             }
-            this.Credentials.Add(new CredentialItem("DesingItem01", "DesignUser01", "DesignPassword01"));
-            this.Credentials.Add(new CredentialItem("DesingItem02", "DesignUser02", "DesignPassword02"));
-            this.Credentials.Add(new CredentialItem("DesingItem03", "DesignUser03", "DesignPassword03"));
-
-
         }
     }
 }

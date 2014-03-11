@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -52,6 +53,15 @@ namespace CloudManager_for_ProfitBricks
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
+
+            if (CredentialDataSource.GetCredentials().Count() > 0)
+            {
+                this.AccountControl.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                this.AccountControl.Visibility = Visibility.Visible;
+            }
         }
 
         /// <summary>
@@ -83,14 +93,6 @@ namespace CloudManager_for_ProfitBricks
         {
         }
 
-        void CredentialView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // Navigate to the appropriate destination page, configuring the new page
-            // by passing required information as a navigation parameter
-            var credential = ((CredentialItem)e.ClickedItem);
-            this.Frame.Navigate(typeof(CoudRessourcePage), credential);
-        }
-
 
         #region NavigationHelper registration
 
@@ -115,5 +117,151 @@ namespace CloudManager_for_ProfitBricks
 
         #endregion
 
+
+        private void AccountItem_Click(object sender, ItemClickEventArgs e)
+        {
+            var credential = ((CredentialItem)e.ClickedItem);
+            this.Frame.Navigate(typeof(CloudRessourcePage), credential);
+        }
+
+        private async void AccountControlSaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Uri wsdluri = new Uri("https://api.profitbricks.com/1.2/?wsdl");
+
+            HttpWebRequest authTestRequest = (HttpWebRequest)WebRequest.Create(wsdluri);
+            authTestRequest.Credentials =  new NetworkCredential(AccountUser.Text,AccountPassword.Password) ;
+            try
+            {
+                WebResponse authTestResponse = await authTestRequest.GetResponseAsync();
+            }
+            catch (WebException exeption)
+            {
+                this.AccountControlMessage.Visibility = Visibility.Visible;
+                this.AccountControlMessage.Text = "Error connectig Webservice:"
+                    + System.Environment.NewLine
+                    + System.Environment.NewLine
+                    + exeption.Message
+                    + System.Environment.NewLine
+                    + System.Environment.NewLine 
+                    + "Account Information was not saved";
+                return;
+            }
+
+            if (!this.AccountUser.IsEnabled && !this.AccountPassword.IsEnabled)
+            {
+                CredentialItem old = CredentialDataSource.GetCredentialByUser(this.AccountUser.Text);
+                CredentialDataSource.RemoveCredential(old.Name, old.User, old.Password);
+                CredentialDataSource.AddCredential(this.AccountName.Text, this.AccountUser.Text, this.AccountPassword.Password);
+            }
+            else
+            {
+                CredentialDataSource.AddCredential(this.AccountName.Text, this.AccountUser.Text, this.AccountPassword.Password);
+                CredentialDataSource.GetCredentials();
+            }
+            this.AccountName.Text = this.AccountUser.Text = this.AccountPassword.Password = "" ;
+            this.AccountName.IsEnabled = this.AccountUser.IsEnabled = this.AccountPassword.IsEnabled = true;
+            this.AccountControlMessage.Visibility = Visibility.Collapsed;
+            this.AccountControlMessage.Text = "";
+            if (CredentialDataSource.GetCredentials().Count() > 0)
+            {
+                this.AccountControl.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void AccountControlChancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (CredentialDataSource.GetCredentials().Count() > 0)
+            {
+                this.AccountControl.Visibility = Visibility.Collapsed;
+            }
+            this.AccountName.Text = this.AccountUser.Text = this.AccountPassword.Password = "";
+            this.AccountName.IsEnabled = this.AccountUser.IsEnabled = this.AccountPassword.IsEnabled = true;
+        }
+
+        private void EditAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.BottomAppBar.IsOpen = false;
+            this.AccountControl.Visibility = Visibility.Visible;
+            this.AccountControlChancelButton.Visibility = Visibility.Visible;
+            var item = (CredentialItem)credentialGridView.SelectedItems.First();
+            this.AccountName.Text = item.Name;
+            this.AccountName.IsEnabled = false;
+            this.AccountUser.Text = item.User;
+            this.AccountPassword.Password = item.Password;
+        }
+
+        private void RenameAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.BottomAppBar.IsOpen = false;
+            this.AccountControl.Visibility = Visibility.Visible;
+            this.AccountControlChancelButton.Visibility = Visibility.Visible;
+            var item = (CredentialItem)credentialGridView.SelectedItems.First();
+            this.AccountName.Text = item.Name;
+            this.AccountUser.Text = item.User;
+            this.AccountUser.IsEnabled = false;
+            this.AccountPassword.Password = item.Password;
+            this.AccountPassword.IsEnabled = false;
+        }
+
+        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.BottomAppBar.IsOpen = false;
+            foreach (CredentialItem item in credentialGridView.SelectedItems )
+            {
+                CredentialDataSource.RemoveCredential(item.Name, item.User, item.Password);
+            }
+            
+            if (CredentialDataSource.GetCredentials().Count() > 0)
+            {
+                this.AccountControl.Visibility = Visibility.Collapsed;
+            }
+            else 
+            {
+                this.AccountControl.Visibility = Visibility.Visible;
+                this.AccountControlChancelButton.Visibility = Visibility.Collapsed;
+            }
+
+        }
+
+        private void AddAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.AccountControl.Visibility = Visibility.Visible;
+            this.AccountControlChancelButton.Visibility = Visibility.Visible;
+            this.BottomAppBar.IsOpen = false;
+        }
+
+        private void CredentialGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (credentialGridView.SelectedItems.Count() > 0)
+            {
+                this.BottomAppBar.IsSticky = true;
+                this.BottomAppBar.IsOpen = true;
+                this.BottomAppBarAddButton.Visibility = Visibility.Collapsed;
+                this.BottomAppBarDeleteButton.IsEnabled = true;
+                this.BottomAppBarEditButton.IsEnabled = this.BottomAppBarRenameButton.IsEnabled = true;
+                if (credentialGridView.SelectedItems.Count() > 1)
+                {
+                    this.BottomAppBarEditButton.IsEnabled = this.BottomAppBarRenameButton.IsEnabled = false;
+                }
+            }
+            else 
+            {
+                this.BottomAppBar.IsSticky = false;
+                this.BottomAppBarDeleteButton.IsEnabled = false;
+                this.BottomAppBarEditButton.IsEnabled = this.BottomAppBarRenameButton.IsEnabled = false;
+                this.BottomAppBarAddButton.Visibility = Visibility.Visible;
+                this.BottomAppBar.IsOpen = false;
+            }
+        }
+
+        private void AccountControl_ChangedText(object sender, TextChangedEventArgs e)
+        {
+            this.AccountControlSaveButton.IsEnabled = !string.IsNullOrWhiteSpace(AccountName.Text) && !string.IsNullOrWhiteSpace(AccountUser.Text) && !string.IsNullOrWhiteSpace(AccountPassword.Password);
+        }
+
+        private void AccountControl_ChangedPassword(object sender, RoutedEventArgs e)
+        {
+            this.AccountControlSaveButton.IsEnabled = !string.IsNullOrWhiteSpace(AccountName.Text) && !string.IsNullOrWhiteSpace(AccountUser.Text) && !string.IsNullOrWhiteSpace(AccountPassword.Password);
+        }
     }
 }

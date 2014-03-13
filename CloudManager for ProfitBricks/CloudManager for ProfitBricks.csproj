@@ -112,7 +112,9 @@
     <Compile Include="CloudRessourcePage.xaml.cs">
       <DependentUpon>CloudRessourcePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\Credentials.cs" />
+    <Compile Include="Common\ProfitBricksApi.cs" />
+    <Compile Include="Data\Credentials.cs" />
+    <Compile Include="Data\Datacenters.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -133,7 +135,11 @@
     </AppxManifest>
     <None Include="Common\ReadMe.txt" />
     <None Include="CloudManager for ProfitBricks_TemporaryKey.pfx" />
-    <None Include="DataModel\SampleCredential.json" />
+    <None Include="Data\SampleData\SampleCredentials.json" />
+    <None Include="Data\SampleData\SampleDataCenterIdentifiers.json" />
+    <None Include="Data\SampleData\SampleDataCenters.json" />
+    <None Include="Data\SampleData\SampleIpBlocks.json" />
+    <None Include="Data\SampleData\SampleSnapshots.json" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
     <None Include="Service References\ProfitBricksApiService\CloudManager_for_ProfitBricks.ProfitBricksApiService.activateFirewallsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

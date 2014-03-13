@@ -1,5 +1,6 @@
 ﻿using CloudManager_for_ProfitBricks.Common;
-
+using CloudManager_for_ProfitBricks.Data;
+using CloudManager_for_ProfitBricks.ProfitBricksApiService;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,11 +22,19 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CloudManager_for_ProfitBricks
 {
-    /// <summary>
+     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     sealed partial class App : Application
     {
+        private CredentialItem currentCredential;
+
+        public CredentialItem CurrentCredential
+        {
+            get { return this.currentCredential; }
+            set { this.currentCredential = value; }
+        }
+
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -34,6 +43,7 @@ namespace CloudManager_for_ProfitBricks
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.currentCredential = new CredentialItem("No Credential Specified", "", "");
         }
 
         /// <summary>

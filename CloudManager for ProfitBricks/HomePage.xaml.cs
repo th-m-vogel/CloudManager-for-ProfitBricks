@@ -53,15 +53,8 @@ namespace CloudManager_for_ProfitBricks
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += navigationHelper_LoadState;
             this.navigationHelper.SaveState += navigationHelper_SaveState;
-
-            if (CredentialDataSource.GetCredentials().Count() > 0)
-            {
-                this.AccountControl.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                this.AccountControl.Visibility = Visibility.Visible;
-            }
+            App myApp = (App)App.Current;
+            myApp.CurrentCredential = new CredentialItem("No Credential Specified", "", "");
         }
 
         /// <summary>
@@ -79,6 +72,10 @@ namespace CloudManager_for_ProfitBricks
         {
             var credentials = CredentialDataSource.GetCredentials();
             this.DefaultViewModel["Credentials"] = credentials;
+            if (credentials.Count() > 0)
+                { this.AccountControl.Visibility = Visibility.Collapsed; }
+            else
+                { this.AccountControl.Visibility = Visibility.Visible; }
         }
 
         /// <summary>
@@ -121,6 +118,8 @@ namespace CloudManager_for_ProfitBricks
         private void AccountItem_Click(object sender, ItemClickEventArgs e)
         {
             var credential = ((CredentialItem)e.ClickedItem);
+            App myApp = (App)App.Current;
+            myApp.CurrentCredential = credential;
             this.Frame.Navigate(typeof(CloudRessourcePage), credential);
         }
 

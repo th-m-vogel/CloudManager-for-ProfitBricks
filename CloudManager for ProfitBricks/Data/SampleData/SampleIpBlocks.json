@@ -1,0 +1,80 @@
+﻿{"IpBlocks":
+	[
+		{
+			"blockId":  "a32a5cca-5193-4199-ad72-6380e4df7f5a",
+			"publicIps":  [
+							  {
+								  "ip":  "46.16.75.147",
+								  "nicId":  "195e76a4-f4c9-43c8-b391-8395d0b2ead8"
+							  },
+							  {
+								  "ip":  "46.16.75.152",
+								  "nicId":  "9d1e014e-15b2-4b71-b0eb-a5c78e58a35a"
+							  },
+							  {
+								  "ip":  "46.16.75.151",
+								  "nicId":  "195e76a4-f4c9-43c8-b391-8395d0b2ead8"
+							  },
+							  {
+								  "ip":  "46.16.74.50",
+								  "nicId":  null
+							  }
+						  ],
+			"region":  2,
+			"regionSpecified":  true
+		},
+		{
+			"blockId":  "f4c50c27-9c71-4d48-b331-07a1cdfec2ee",
+			"publicIps":  [
+							  {
+								  "ip":  "69.194.130.218",
+								  "nicId":  null
+							  },
+							  {
+								  "ip":  "69.194.130.214",
+								  "nicId":  null
+							  }
+						  ],
+			"region":  1,
+			"regionSpecified":  true
+		},
+		{
+			"blockId":  "833ff6e1-34b5-4275-9e01-f9f37f216baf",
+			"publicIps":  [
+							  {
+								  "ip":  "46.16.74.184",
+								  "nicId":  "a10f548d-c31b-4a2c-9099-f3bbb5e7e343"
+							  },
+							  {
+								  "ip":  "46.16.74.163",
+								  "nicId":  null
+							  },
+							  {
+								  "ip":  "46.16.74.181",
+								  "nicId":  "a10f548d-c31b-4a2c-9099-f3bbb5e7e343"
+							  },
+							  {
+								  "ip":  "46.16.74.156",
+								  "nicId":  null
+							  }
+						  ],
+			"region":  2,
+			"regionSpecified":  true
+		},
+		{
+			"blockId":  "d1113e1f-712e-4f05-b7c0-4fc7656ce69c",
+			"publicIps":  [
+							  {
+								  "ip":  "46.16.79.136",
+								  "nicId":  "b447e2a8-5cf3-47fc-a3e8-be38be8492b3"
+							  },
+							  {
+								  "ip":  "46.16.79.135",
+								  "nicId":  "01755f1f-72fe-47d5-ab38-47387c1b980b"
+							  }
+						  ],
+			"region":  2,
+			"regionSpecified":  true
+		}
+	]
+}

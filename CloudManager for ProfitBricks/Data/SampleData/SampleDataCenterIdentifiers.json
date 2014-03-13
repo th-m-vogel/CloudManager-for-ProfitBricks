@@ -1,0 +1,124 @@
+﻿{"DataCenterIdentifiers":
+	[
+		{
+			"dataCenterId":  "920784e1-9303-40da-b084-d79ee3a41085",
+			"dataCenterName":  "Keepalived HA Voycer",
+			"dataCenterVersion":  2,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "8265fa37-2f58-41e9-87c5-f5ed68585f82",
+			"dataCenterName":  "Provisioningtest us-lv-cluster-19",
+			"dataCenterVersion":  1341,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "13976c24-4c36-4ba4-a1be-21c0defa0f12",
+			"dataCenterName":  "GehtdochCitrixCloud",
+			"dataCenterVersion":  32,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "ef0aefd6-efe3-4846-b033-330566c9d5e4",
+			"dataCenterName":  "RiakCS PoC",
+			"dataCenterVersion":  87,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "163bfb93-bacc-44fd-bfc3-e862a8c47aaf",
+			"dataCenterName":  "GehtdochOnPremise",
+			"dataCenterVersion":  32,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "08be1c1a-868b-43d8-a8e9-89e43ac05996",
+			"dataCenterName":  "Stingray",
+			"dataCenterVersion":  20,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "001c1913-00cc-40fe-9954-2e5c2953baec",
+			"dataCenterName":  "Master mit LB",
+			"dataCenterVersion":  7,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "5726b460-22ba-4550-a8f9-f676b6fe8804",
+			"dataCenterName":  "SoftAX",
+			"dataCenterVersion":  23,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "ded1d0f7-7eed-4b9b-af24-556b9d6fe6fe",
+			"dataCenterName":  "Master DC",
+			"dataCenterVersion":  4,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "1f852359-3627-4d43-af7a-35cd702c18f5",
+			"dataCenterName":  "Master",
+			"dataCenterVersion":  2,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "b792a449-3597-4a1b-b563-502c2a8053da",
+			"dataCenterName":  "Keepalived HA Setup",
+			"dataCenterVersion":  5,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "a00c7f0c-dbb4-48df-9a5b-66effdb1e100",
+			"dataCenterName":  "DebianMini",
+			"dataCenterVersion":  13,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "f7d4c7e8-ef24-4e66-bd99-6a79f788e238",
+			"dataCenterName":  "Zen LB",
+			"dataCenterVersion":  3,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "c264693b-e91d-4195-978b-a3c58061f855",
+			"dataCenterName":  "SQLIO-DE-Cluster3",
+			"dataCenterVersion":  8,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "3ab959ca-7656-452f-8407-781b985aad81",
+			"dataCenterName":  "SQLIO-US",
+			"dataCenterVersion":  13,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "5cfb3ff4-b83d-4f00-a548-d3e3e772b8b7",
+			"dataCenterName":  "Provisioningtest us-lv-cluster-03",
+			"dataCenterVersion":  71,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "d79a92e1-b0d5-4d67-aa6c-3da9b32831b4",
+			"dataCenterName":  "API-Host",
+			"dataCenterVersion":  4,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "e6618db7-030b-4777-9eb5-730b9f1f65fc",
+			"dataCenterName":  "Provisioningtest de-ka-cluster-17",
+			"dataCenterVersion":  936,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "dff7613d-b19a-4d55-9774-ba6e6c93b56a",
+			"dataCenterName":  "Provisioningtest de-ka-cluster-01",
+			"dataCenterVersion":  319,
+			"dataCenterVersionSpecified":  true
+		},
+		{
+			"dataCenterId":  "582926c3-cbe3-4320-b828-980ac34a6230",
+			"dataCenterName":  "Provisioningtest de-ka-cluster-05",
+			"dataCenterVersion":  157,
+			"dataCenterVersionSpecified":  true
+		}
+	]
+}

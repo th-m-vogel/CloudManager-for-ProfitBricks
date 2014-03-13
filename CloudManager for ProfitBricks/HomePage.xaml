@@ -16,7 +16,8 @@
         <CollectionViewSource
             x:Name="CredentialViewSource"
             Source="{Binding Credentials}"
-            d:Source="{Binding Credentials, Source={d:DesignData Source=/DataModel/SampleCredential.json, Type=data:CredentialDataSource}}"/>
+            d:Source="{Binding Credentials, Source={d:DesignData Source=/Data/SampleData/SampleCredentials.json, Type=data:CredentialDataSource}}"
+            />
     </Page.Resources>
     
     <Page.BottomAppBar>
@@ -81,9 +82,9 @@
                         </Border>
                         <StackPanel Grid.Column="1" Margin="20,0,0,0">
                             <TextBlock Text="Account Name" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
-                            <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                            <TextBlock Text="{Binding Name, Mode=OneWay}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
                             <TextBlock Text="Login Name" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
-                            <TextBlock Text="{Binding User}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
+                            <TextBlock Text="{Binding User, Mode=OneWay}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="NoWrap"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

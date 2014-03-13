@@ -1,4 +1,6 @@
 ﻿using CloudManager_for_ProfitBricks.Common;
+using CloudManager_for_ProfitBricks.Data;
+using CloudManager_for_ProfitBricks.ProfitBricksApiService;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -64,8 +66,18 @@ namespace CloudManager_for_ProfitBricks
         /// <see cref="Frame.Navigate(Type, Object)"/> when this page was initially requested and
         /// a dictionary of state preserved by this page during an earlier
         /// session. The state will be null the first time a page is visited.</param>
-        private void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            CredentialItem credential = (CredentialItem)e.NavigationParameter;
+            this.DefaultViewModel["Credential"] = credential;
+            var datacentersidentifiers = await DatacenterDataSource.GetDataCenterIdentifiersAscnc();
+            this.DefaultViewModel["DataCenterIdentifiers"] = datacentersidentifiers ;
+            var datacenters = await DatacenterDataSource.GetDataCentersAscnc();
+            this.DefaultViewModel["DataCenters"] = datacenters;
+            var snapshots = await DatacenterDataSource.GetSnapshotsAscnc();
+            this.DefaultViewModel["Snapshots"] = snapshots;
+            var ipblocks = await DatacenterDataSource.GetIpBlocksAscnc();
+            this.DefaultViewModel["IpBlocks"] = ipblocks;
         }
 
         /// <summary>

@@ -47,7 +47,6 @@ namespace CloudManager_for_ProfitBricks.Data
         public static CredentialItem GetCredentialByName(string name)
         {
             _credentialDataSource.GetCredentialData();
-            // Simple linear search is acceptable for small data sets
             var matches = _credentialDataSource.Credentials.Where((credential) => credential.Name.Equals(name));
             if (matches.Count() == 1) return matches.First();
             return null;
@@ -56,7 +55,6 @@ namespace CloudManager_for_ProfitBricks.Data
         public static CredentialItem GetCredentialByUser(string user)
         {
             _credentialDataSource.GetCredentialData();
-            // Simple linear search is acceptable for small data sets
             var matches = _credentialDataSource.Credentials.Where((credential) => credential.User.Equals(user));
             if (matches.Count() == 1) return matches.First();
             return null;

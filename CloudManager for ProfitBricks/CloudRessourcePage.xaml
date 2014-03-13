@@ -6,13 +6,53 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CloudManager_for_ProfitBricks"
     xmlns:common="using:CloudManager_for_ProfitBricks.Common"
+    xmlns:data="using:CloudManager_for_ProfitBricks.Data"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" 
+    >
 
     <Page.Resources>
-        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">Cloud Ressorces for</x:String>
+        <CollectionViewSource
+            x:Name="DatacenterIdentifiersViewSource"
+            Source="{Binding DataCenterIdentifiers}"
+            d:Source="{Binding DataCenterIdentifiers, Source={d:DesignData Source=/Data/SampleData/SampleDataCenterIdentifiers.json, Type=data:DatacenterDataSource}}"
+            />
+        <CollectionViewSource
+            x:Name="IpBlocksViewSource"
+            Source="{Binding IpBlocks}"
+            d:Source="{Binding IpBlocks, Source={d:DesignData Source=/Data/SampleData/SampleIpBlocks.json, Type=data:DatacenterDataSource}}"
+            />
+        <CollectionViewSource
+            x:Name="SnapshotsViewSource"
+            Source="{Binding Snapshots}"
+            d:Source="{Binding Snapshots, Source={d:DesignData Source=/Data/SampleData/SampleSnapshots.json, Type=data:DatacenterDataSource}}"
+            />
+        <DataTemplate x:Key="DataCenterItemTemplate">
+            <Grid Width="250" Height="60">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                    <TextBlock Text="{Binding dataCenterName}"/>
+                    <TextBlock Text="{Binding dataCenterVersion}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SnapshotItemTemplate">
+            <Grid Width="340" Height="100">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                    <TextBlock Text="{Binding snapshotName}" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding creationTimestamp}"/>
+                    <TextBlock Text="{Binding description}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="IpBlockItemTemplate">
+            <Grid Width="140" Height="60">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                    <TextBlock Text="{Binding region}"/>
+                    <TextBlock Text="{Binding publicIps.Count}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Page.Resources>
 
     <!--
@@ -30,7 +70,13 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        <Grid Grid.Row="1">
+            <StackPanel  Orientation="Horizontal">
+                <GridView Padding="120,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource DatacenterIdentifiersViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource DataCenterItemTemplate}"/>
+                <GridView Padding="60,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource SnapshotsViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource SnapshotItemTemplate}"/>
+                <GridView Padding="60,0,120,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource IpBlocksViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource IpBlockItemTemplate}"/>
+            </StackPanel>
+        </Grid>
         <!-- Back button and page title -->
         <Grid>
             <Grid.ColumnDefinitions>
@@ -38,13 +84,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
-                        Style="{StaticResource NavigationBackButtonNormalStyle}"
-                        VerticalAlignment="Top"
-                        AutomationProperties.Name="Back"
-                        AutomationProperties.AutomationId="BackButton"
-                        AutomationProperties.ItemType="Navigation Button"/>
-            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
-                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+                Style="{StaticResource NavigationBackButtonNormalStyle}"
+                VerticalAlignment="Top"
+                AutomationProperties.Name="Back"
+                AutomationProperties.AutomationId="BackButton"
+                AutomationProperties.ItemType="Navigation Button"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,30,40" Grid.Column="1" >
+                <TextBlock Text="Cloud Ressources for: " Style="{StaticResource HeaderTextBlockStyle}"
+                    IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" FontFamily="Global User Interface"/>
+                <TextBlock Text="{Binding Credential.Name}" Style="{StaticResource HeaderTextBlockStyle}"  
+                    IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" FontFamily="Global User Interface" Margin="20,0,0,0"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

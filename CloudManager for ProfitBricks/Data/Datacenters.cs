@@ -36,10 +36,10 @@ namespace CloudManager_for_ProfitBricks.Data
         {
             get { return this._snapshots; }
         }
-        //public ObservableCollection<image> Images
-        //{
-        //    get { return _images; }
-        //}
+        public ObservableCollection<image> Images
+        {
+            get { return _images; }
+        }
         public ObservableCollection<ipBlock> IpBlocks
         {
             get { return this._ipBlocks; }
@@ -112,6 +112,22 @@ namespace CloudManager_for_ProfitBricks.Data
             foreach (var item in response.@return)
             {
                 this.IpBlocks.Add(item);
+            }
+        }
+
+        public static async Task<IEnumerable<image>> GetImagesAscnc()
+        {
+            await _datacenterDataSource.getImagesAscnc();
+            return _datacenterDataSource.Images;
+        }
+        private async Task getImagesAscnc()
+        {
+            credential = ((App)App.Current).CurrentCredential;
+            ProfitBricksApi = new ProfitBricksApi(credential.User, credential.Password);
+            var response = await this.ProfitBricksApi.Proxy.getAllImagesAsync();
+            foreach (var item in response.@return)
+            {
+                this.Images.Add(item);
             }
         }
 

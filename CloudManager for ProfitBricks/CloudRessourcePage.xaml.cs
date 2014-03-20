@@ -76,6 +76,8 @@ namespace CloudManager_for_ProfitBricks
             this.DefaultViewModel["DataCenters"] = datacenters;
             var snapshots = await DatacenterDataSource.GetSnapshotsAscnc();
             this.DefaultViewModel["Snapshots"] = snapshots;
+            var images = await DatacenterDataSource.GetImagesAscnc();
+            this.DefaultViewModel["Images"] = images;
             var ipblocks = await DatacenterDataSource.GetIpBlocksAscnc();
             this.DefaultViewModel["IpBlocks"] = ipblocks;
         }

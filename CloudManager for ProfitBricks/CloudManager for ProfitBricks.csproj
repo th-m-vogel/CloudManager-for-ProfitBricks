@@ -138,6 +138,7 @@
     <None Include="Data\SampleData\SampleCredentials.json" />
     <None Include="Data\SampleData\SampleDataCenterIdentifiers.json" />
     <None Include="Data\SampleData\SampleDataCenters.json" />
+    <None Include="Data\SampleData\SampleImages.json" />
     <None Include="Data\SampleData\SampleIpBlocks.json" />
     <None Include="Data\SampleData\SampleSnapshots.json" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />

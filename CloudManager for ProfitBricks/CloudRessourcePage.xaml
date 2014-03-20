@@ -28,6 +28,11 @@
             Source="{Binding Snapshots}"
             d:Source="{Binding Snapshots, Source={d:DesignData Source=/Data/SampleData/SampleSnapshots.json, Type=data:DatacenterDataSource}}"
             />
+        <CollectionViewSource
+            x:Name="ImagesViewSource"
+            Source="{Binding Images}"
+            d:Source="{Binding Images, Source={d:DesignData Source=/Data/SampleData/SampleImages.json, Type=data:DatacenterDataSource}}"
+            />
         <DataTemplate x:Key="DataCenterItemTemplate">
             <Grid Width="250" Height="60">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
@@ -42,6 +47,16 @@
                     <TextBlock Text="{Binding snapshotName}" HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding creationTimestamp}"/>
                     <TextBlock Text="{Binding description}" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ImageItemTemplate">
+            <Grid Width="340" Height="100">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+                    <TextBlock Text="{Binding imageName}" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding imageType}"/>
+                    <TextBlock Text="{Binding region}" />
+                    <CheckBox IsChecked="{Binding public}"  />
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -70,13 +85,14 @@
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
+        <GridView Grid.Row="1">
             <StackPanel  Orientation="Horizontal">
-                <GridView Padding="120,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource DatacenterIdentifiersViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource DataCenterItemTemplate}"/>
+                <GridView Padding="120,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource DatacenterIdentifiersViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource DataCenterItemTemplate}" />
                 <GridView Padding="60,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource SnapshotsViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource SnapshotItemTemplate}"/>
+                <GridView Padding="60,0,0,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource ImagesViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource ImageItemTemplate}"/>
                 <GridView Padding="60,0,120,50" Grid.Row="1" ItemsSource="{Binding Source={StaticResource IpBlocksViewSource}}" HorizontalAlignment="Left" ItemTemplate="{StaticResource IpBlockItemTemplate}"/>
             </StackPanel>
-        </Grid>
+        </GridView>
         <!-- Back button and page title -->
         <Grid>
             <Grid.ColumnDefinitions>
